@@ -52,6 +52,10 @@ object Build : BuildType({
         maven {
             name = "Maven deploy"
             id = "Maven_deploy"
+
+            conditions {
+                equals("teamcity.build.branch.is_default", "true")
+            }
             goals = "clean deploy"
             userSettingsSelection = "nexus-settings"
         }
